@@ -1,3 +1,4 @@
+import Button from "./components/Button";
 import Count from "./components/Count";
 import Header from "./components/Header";
 
@@ -5,7 +6,10 @@ const App = () => {
   return (
     <div className=" container mx-auto rounded-lg nm-inset-slate-200 overflow-hidden w-full ">
       <Header />
-      <Count />
+      <div className="flex justify-center items-center flex-col my-5 gap-8">
+        <Count />
+        <Button />
+      </div>
     </div>
   );
 };
