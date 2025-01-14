@@ -28,25 +28,33 @@ const Header = () => {
               Personalizar nivel de concentración
             </h3>
             <Settings
+              setShow={setShow}
               title={"Novice"}
               pomodoro={10}
-              breack={5}
+              breack={15}
+              value={"novice"}
             />
             <Settings
+              setShow={setShow}
               title={"Intermediate"}
               pomodoro={25}
-              breack={10}
+              breack={5}
+              value={"intermediate"}
             />
 
             <Settings
+              setShow={setShow}
               title={"Advanced"}
               pomodoro={35}
-              breack={15}
+              breack={8}
+              value={"avanced"}
             />
             <Settings
+              setShow={setShow}
               title={"Expert"}
               pomodoro={60}
-              breack={15}
+              breack={10}
+              value={"expert"}
             />
           </div>
         )}
