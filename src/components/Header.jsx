@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <div className=" w-full py-4 px-5 flex justify-between items-center ">
-      <h1 className="font-extrabold text-2xl ">Pomodore.Dev</h1>
+      <h1 className="font-extrabold text-lg sm:text-2xl ">Pomodore.Dev</h1>
       <div className="relative">
         <button
           onClick={() => setShow(!show)}

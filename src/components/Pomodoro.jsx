@@ -45,7 +45,6 @@ const Pomodoro = () => {
       if (leftSecondsTimer.current === 0) {
         return switchMode();
       }
-
       tick();
     }, 1000);
     return () => clearInterval(interval);
