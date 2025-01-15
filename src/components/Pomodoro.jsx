@@ -1,39 +1,87 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import Circle from "./Circle";
+import { useContgob } from "../hooks/useContgob";
 
 const Pomodoro = () => {
-  const [clock, setClock] = useState("09:00");
-  const [porcent, setPorcent] = useState(100);
-  const timeLeft = 9;
-  let time = timeLeft * 60;
-  const timerInterval = useRef(null);
-  const updateTime = () => {
-    const min = `${String(Math.floor(time / 60)).padStart(2, 0)}`;
-    const sec = `${String(time % 60).padStart(2, 0)}`;
-    setClock(`${min}:${sec}`);
-  };
-  const starClock = () => {
-    if (!timerInterval.current) {
-      timerInterval.current = setInterval(() => {
-        if (time > 0) {
-          time--;
-          updateTime();
-          setPorcent((time / (timeLeft * 60)) * 100);
-        } else {
-          clearInterval(timerInterval.current);
-          timerInterval.current = null;
-        }
-      }, 1000);
+  const {
+    select: { pomodoro, breack },
+  } = useContgob();
+
+  const [isWork, setIsWork] = useState(true);
+  const [isCancel, setIsCancel] = useState(true);
+  const [secondsTimer, setSecondsTimer] = useState(0);
+
+  const mode = useRef(true);
+  const cancel = useRef(true);
+  const leftSecondsTimer = useRef(secondsTimer);
+
+  function tick() {
+    leftSecondsTimer.current--;
+    setSecondsTimer(leftSecondsTimer.current);
+  }
+  function reset() {
+    leftSecondsTimer.current = pomodoro * 60;
+    setSecondsTimer(leftSecondsTimer.current);
+    mode.current = true;
+    setIsWork(mode.current);
+    (cancel.current = true), setIsCancel(cancel.current);
+  }
+
+  useEffect(() => {
+    function switchMode() {
+      const nextMode = mode.current ? false : true;
+      const nextSecond = (nextMode ? pomodoro : breack) * 60;
+      setIsWork(nextMode);
+      mode.current = nextMode;
+      setSecondsTimer(nextSecond);
+      leftSecondsTimer.current = nextSecond;
     }
-  };
+    reset();
+    const interval = setInterval(() => {
+      if (cancel.current) {
+        return;
+      }
+      if (leftSecondsTimer.current === 0) {
+        return switchMode();
+      }
+
+      tick();
+    }, 100);
+    return () => clearInterval(interval);
+  }, [breack, pomodoro]);
+
+  const totalSeconds = mode.current ? pomodoro * 60 : breack * 60;
+  const percentage = Math.round((secondsTimer / totalSeconds) * 100);
+
+  const minutes = Math.floor(secondsTimer / 60);
+  let seconds = secondsTimer % 60;
+  if (seconds < 10) seconds = "0" + seconds;
   return (
     <div className="flex justify-center items-center flex-col my-5 gap-8 flex-1">
       <Circle
-        text={clock}
-        porcent={porcent}
+        porcent={percentage}
+        text={minutes + ":" + seconds}
+        state={isWork}
       />
-      <Button onclick={starClock} />
+      {isCancel ? (
+        <Button
+          onclick={() => {
+            setIsCancel(false);
+            cancel.current = false;
+          }}
+          color={"nm-concave-blue-400-xs"}
+        >
+          Comenzar
+        </Button>
+      ) : (
+        <Button
+          onclick={reset}
+          color={"nm-concave-red-400-xs"}
+        >
+          Cancelar
+        </Button>
+      )}
     </div>
   );
 };
