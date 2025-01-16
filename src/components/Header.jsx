@@ -21,7 +21,7 @@ const Header = () => {
         {show && (
           <div
             className={
-              "nm-concave-slate-200 absolute top-12 min-w-60 right-1/2 p-4 "
+              "nm-concave-slate-200 absolute right-3   sm:top-12 min-w-60 sm:right-1/2 p-4 z-50 "
             }
           >
             <h3 className="text-lg font-semibold mb-2">
