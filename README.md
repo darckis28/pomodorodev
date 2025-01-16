@@ -18,6 +18,7 @@ Puedes acceder al proyecto en el siguiente enlace: [Pomodoro Timer](https://pomo
 - CSS
 - JavaScript
 - Tailwind CSS
+- React
 
 ## Instalación
 
@@ -33,7 +34,19 @@ git clone https://github.com/tu-usuario/pomodoroTimer.git
 cd pomodoroTimer
 ```
 
-3. Abre el archivo `index.html` en tu navegador.
+3. Instala las dependencias:
+
+```bash
+npm install
+```
+
+4. Inicia el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+5. Abre el archivo `index.html` en tu navegador.
 
 ## Uso
 
