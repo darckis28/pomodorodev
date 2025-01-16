@@ -23,7 +23,7 @@ const ContextGob = ({ children }) => {
   const [select, setSelect] = useState({
     name: "novice",
     selected: true,
-    breack: 15,
+    rest: 15,
     pomodoro: 10,
   });
   return (
