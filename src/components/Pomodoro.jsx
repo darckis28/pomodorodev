@@ -57,7 +57,14 @@ const Pomodoro = () => {
   let seconds = secondsTimer % 60;
   if (seconds < 10) seconds = "0" + seconds;
   return (
-    <div className="flex justify-center items-center flex-col my-5 gap-8 flex-1">
+    <div className="flex justify-center items-center flex-col my-5 gap-4 flex-1">
+      <h3
+        className={`text-4xl font-semibold transition-all ${
+          isWork ? "text-blue-400" : "text-green-300"
+        }`}
+      >
+        {isWork ? "Work" : "breack"}
+      </h3>
       <Circle
         porcent={percentage}
         text={minutes + ":" + seconds}
