@@ -1,8 +1,50 @@
-# React + Vite
+# Pomodoro Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto de un temporizador Pomodoro que te ayudará a mejorar tu productividad gestionando tu tiempo de trabajo y descanso.
 
-Currently, two official plugins are available:
+## Enlace al proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Puedes acceder al proyecto en el siguiente enlace: [Pomodoro Timer](https://pomodorodev.netlify.app/)
+
+## Características
+
+- Temporizador de trabajo y descanso configurable.
+- Notificaciones al finalizar cada sesión.
+- Interfaz amigable y fácil de usar.
+
+## Tecnologías utilizadas
+
+- HTML
+- CSS
+- JavaScript
+- Tailwind CSS
+
+## Instalación
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/tu-usuario/pomodoroTimer.git
+```
+
+2. Navega al directorio del proyecto:
+
+```bash
+cd pomodoroTimer
+```
+
+3. Abre el archivo `index.html` en tu navegador.
+
+## Uso
+
+1. Configura el tiempo de trabajo y descanso según tus necesidades.
+2. Haz clic en el botón de inicio para comenzar el temporizador.
+3. Recibe notificaciones al finalizar cada sesión de trabajo o descanso.
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request para mejorar el proyecto.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
